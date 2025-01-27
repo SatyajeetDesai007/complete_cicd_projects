@@ -29,6 +29,8 @@ jobs:
 
     - name: Install dependencies
       run: |
+        pip install Flask==2.2.2
+        pip install Werkzeug==2.2.2
         pip install -r project1/requirements.txt  # Adjusted path to requirements.txt 
 
     - name: Run tests with pytest
