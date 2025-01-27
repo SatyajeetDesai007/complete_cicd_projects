@@ -34,7 +34,18 @@ jobs:
         pip install pytest
         pip install -r project1/requirements.txt  # Adjusted path to requirements.txt 
 
+    - name: Build Docker image
+      run: |
+          docker build -t flask-app .
+
     - name: Run tests with pytest
       run: |
-        pytest --maxfail=1 --disable-warnings -q  # Run tests, limit to 1 failure, disable warnings
+          docker run flask-app pytest --maxfail=1 --disable-warnings -q
 
+    - name: Cache Docker layers
+      uses: actions/cache@v2
+      with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx
