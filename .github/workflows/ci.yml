@@ -86,13 +86,13 @@ jobs:
       run: cd project1/terraform
 
     - name: Initialize Terraform
-      run: terraform init -chdir=project1/terraform
+      run: terraform init -chdir=./project1/terraform
 
     - name: Terraform Plan
-      run: terraform plan -chdir=project1/terraform
+      run: terraform plan -chdir=./project1/terraform
 
     - name: Apply Terraform Plan
-      run: terraform apply -auto-approve -chdir=project1/terraform
+      run: terraform apply -chdir=./project1/terraform -auto-approve
 
 
     - name: Cache Terraform modules
