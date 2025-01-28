@@ -1,9 +1,14 @@
 provider "aws" {
   region = "us-east-1"
 }
+
+resource "random_id" "unique" {
+  byte_length = 8
+}
+
 resource "aws_security_group" "eks_sg" {
-  name        = "eks_sg"
-  description = "Allow SSH and HTTP"
+  name        = "eks_sg_${random_id.unique.hex}"  # Append random ID to make the name unique
+  description = "Allow SSH, HTTP, and HTTPS"
   ingress {
     from_port   = 22
     to_port     = 22
