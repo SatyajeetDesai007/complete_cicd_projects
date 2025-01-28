@@ -78,6 +78,11 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1  # Set the AWS region you are using
 
+    - name: Decode Kubeconfig and Set as ENV variable
+      run: |
+          echo "${{ secrets.KUBE_CONFIG }}" | base64 --decode > kubeconfig
+          export KUBECONFIG=kubeconfig
+
     - name: Navigate to Terraform directory
       run: cd project1/terraform
 
