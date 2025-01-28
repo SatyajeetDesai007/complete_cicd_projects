@@ -81,6 +81,10 @@ jobs:
     - name: Initialize Terraform
       run: terraform init  # Initialize Terraform
 
+    - name: Print current directory (Debugging)
+      run: pwd
+
+
     - name: Terraform Plan
       run: terraform plan  # Create an execution plan
 
