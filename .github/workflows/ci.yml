@@ -78,6 +78,10 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1  # Set the AWS region you are using
 
+    - name: Check Terraform Version
+      run: terraform version
+
+
     - name: Navigate to Terraform directory
       run: cd project1/terraform
 
