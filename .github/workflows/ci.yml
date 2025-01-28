@@ -77,9 +77,6 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1  # Set the AWS region you are using
-        
-    - name: Set up kubeconfig
-      run: echo "${{ secrets.K8S_KUBECONFIG }}" | base64 -d > $HOME/.kube/config
 
     - name: Navigate to Terraform directory
       run: cd project1/terraform
@@ -92,12 +89,12 @@ jobs:
     - name: Terraform Plan
       run: |
         cd project1/terraform
-        terraform plan -out=tfplan
+        terraform plan 
 
     - name: Apply Terraform Plan
       run: |
         cd project1/terraform
-         terraform apply -auto-approve tfplan
+         terraform apply -auto-approve 
 
 
     - name: Cache Terraform modules
