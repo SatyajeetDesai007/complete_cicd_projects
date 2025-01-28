@@ -1,10 +1,7 @@
 provider "aws" {
   region = "us-east-1"
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> d0d939b9cf0463555938379343eda35bce6379b0
 resource "random_id" "unique" {
   byte_length = 8
 }
